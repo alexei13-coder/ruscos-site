@@ -12,17 +12,16 @@
     body { font-family: 'Inter', sans-serif; background-color: #fffcf8; color: #2c2b28; line-height: 1.5; }
     h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    /* language switcher */
-    .lang-switcher { position: fixed; top: 20px; left: 20px; z-index: 1001; background: #b3470c; color: white; border-radius: 40px; padding: 8px 16px; cursor: pointer; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.2s; border: none; }
-    .lang-switcher:hover { background: #8e3a08; transform: scale(1.02); }
-    .lang-dropdown { position: fixed; top: 70px; left: 20px; background: white; border-radius: 24px; box-shadow: 0 12px 28px rgba(0,0,0,0.2); z-index: 1000; width: 220px; overflow: hidden; display: none; border: 1px solid #f0e0d0; }
+    .lang-switcher { position: fixed; top: 20px; left: 20px; z-index: 1001; background: #b3470c; color: white; border-radius: 40px; padding: 8px 16px; cursor: pointer; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: none; }
+    .lang-switcher:hover { background: #8e3a08; }
+    .lang-dropdown { position: fixed; top: 70px; left: 20px; background: white; border-radius: 24px; box-shadow: 0 12px 28px rgba(0,0,0,0.2); z-index: 1000; width: 220px; display: none; border: 1px solid #f0e0d0; }
     .lang-dropdown.active { display: block; }
-    .lang-option { padding: 12px 18px; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f5ede5; }
+    .lang-option { padding: 12px 18px; cursor: pointer; display: flex; gap: 10px; border-bottom: 1px solid #f5ede5; }
     .lang-option:hover { background: #fef0e6; }
     .lang-option.active-lang { background: #b3470c20; font-weight: 600; color: #b3470c; }
     header { background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(2px); background: rgba(255,255,245,0.96); }
     nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; max-width: 1360px; margin: 0 auto; }
-    .logo { font-size: 28px; font-weight: 700; color: #b3470c; }
+    .logo { font-size: 28px; font-weight: 700; color: #b3470c; text-decoration: none; }
     .logo span { font-size: 20px; font-weight: 400; color: #5a3e2b; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { text-decoration: none; font-weight: 500; color: #2c2b28; transition: 0.2s; font-size: 16px; }
@@ -36,7 +35,7 @@
     .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn-primary { background: #b3470c; color: white; padding: 12px 28px; font-weight: 600; border-radius: 40px; text-decoration: none; display: inline-block; transition: background 0.2s; }
     .btn-primary:hover { background: #8e3a08; }
-    .btn-outline { border: 1.5px solid #b3470c; color: #b3470c; padding: 12px 28px; font-weight: 600; border-radius: 40px; text-decoration: none; transition: 0.2s; background: transparent; }
+    .btn-outline { border: 1.5px solid #b3470c; color: #b3470c; padding: 12px 28px; font-weight: 600; border-radius: 40px; text-decoration: none; background: transparent; }
     .btn-outline:hover { background: #b3470c10; }
     .hero-img img { max-width: 100%; border-radius: 28px; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15); width: 100%; max-width: 500px; object-fit: cover; }
     section { padding: 80px 0; }
@@ -102,7 +101,7 @@
 
 <header>
   <nav>
-    <div class="logo">RUSCO'S <span>Russian Bistro</span></div>
+    <a href="#home" class="logo">RUSCO'S <span>Russian Bistro</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" data-i18n="nav_home">Home</a></li>
       <li><a href="#about" data-i18n="nav_about">About</a></li>
@@ -121,7 +120,7 @@
         <p data-i18n="hero_subtitle">Welcome to Rusco's — where Siberian pelmeni meet Brooklyn warmth. Authentic recipes passed down for generations, prepared with love in the heart of USA.</p>
         <div class="btn-group">
           <a href="#contact" class="btn-primary" data-i18n="btn_reserve">Reserve a table</a>
-          <a href="menu.html"  class="btn-outline" data-i18n="btn_explore">Explore menu</a>
+          <a href="menu.html" class="btn-outline" data-i18n="btn_explore">Explore menu</a>
         </div>
       </div>
       <div class="hero-img"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format" alt="Russian feast"></div>
@@ -210,6 +209,7 @@
 </footer>
 
 <script>
+// ПОЛНЫЕ ПЕРЕВОДЫ ДЛЯ 10 ЯЗЫКОВ
 const translations = {
   en: {
     nav_home: "Home", nav_about: "About", nav_menu: "Menu", nav_reservations: "Reservations",
@@ -233,17 +233,154 @@ const translations = {
     full_menu_btn: "Полное меню и спецпредложения", gallery_title: "Интерьер Rusco's",
     form_title: "Забронировать столик", form_name: "Полное имя", form_email: "Адрес электронной почты", form_phone: "Номер телефона", form_special: "Особые пожелания (аллергии, праздник...)", form_submit: "Отправить запрос", guests_2: "2 гостя", guests_4: "4 гостя", guests_6: "6 гостей", guests_8: "8+ гостей", visit_title: "Посетите нас", address: "245 East 8th Street, New York, NY 10009", hours: "Пн–Чт: 12:00 – 22:00<br>Пт–Вс: 12:00 – 23:00", footer_copyright: "© 2025 Rusco's Русский бистро. Вкус дома вдали от дома.", footer_tagline: "С гордостью подаём традиционную русскую кухню в США.", form_error_name: "Пожалуйста, введите ваше имя.", form_success: "Спасибо, {name}! Ваш запрос отправлен. Мы перезвоним вам для подтверждения в течение 2 часов."
   },
-  // Остальные языки (es, fr, de, zh, ja, ar, it, pt) для краткости не приводятся, но в полной версии они есть.
-  // Для работы добавьте их по аналогии или скачайте полный файл.
+  es: {
+    nav_home: "Inicio", nav_about: "Nosotros", nav_menu: "Menú", nav_reservations: "Reservas",
+    hero_title: "Alma rusa,<br>hogar americano.",
+    hero_subtitle: "Bienvenido a Rusco's, donde los pelmeni siberianos se encuentran con la calidez de Brooklyn. Recetas auténticas transmitidas por generaciones, preparadas con amor en el corazón de EE. UU.",
+    btn_reserve: "Reservar mesa", btn_explore: "Explorar menú",
+    about_title: "Nuestra historia", about_p1: "Somos chicos normales de un pequeño pueblo de Rusia: Nizhnevartovsk. Alexey y Vladimir. Soñábamos con llevar todos los sabores de nuestras madres rusas a un país grande como Estados Unidos. Así que hicimos las maletas, las recetas de nuestras abuelas y mucho amor por la cocina.", about_p2: "Ahora, en Rusco's, compartimos la comida que sabe a hogar. Esperamos que disfruten nuestros platos tanto como nosotros disfrutamos prepararlos. Y si quieren dar las gracias especialmente, pueden dejarnos un mensaje aquí mismo en el sitio. Un cordial saludo, Rusco's.",
+    feature_farm: "Fresco de granja", feature_vodka: "Vodka artesanal ruso", feature_family: "Negocio familiar",
+    menu_title: "Platos insignia", dish1_name: "Pelmeni Siberia", dish1_desc: "Empanadillas siberianas rellenas de carne de res y cerdo, servidas con crema agria y eneldo fresco.", dish2_name: "Borscht clásico", dish2_desc: "Sopa abundante de remolacha y repollo, cocida a fuego lento con carne, terminada con crema agria.", dish3_name: "Beef Stroganoff", dish3_desc: "Tiras tiernas de res en salsa cremosa de champiñones, servidas con puré de papas.", dish4_name: "Blini Rusco's", dish4_desc: "Crepes rusos finos con opción de caviar rojo, salmón o mermelada clásica con leche condensada.",
+    full_menu_btn: "Menú completo y especiales", gallery_title: "Dentro de Rusco's",
+    form_title: "Reservar mesa", form_name: "Nombre completo", form_email: "Correo electrónico", form_phone: "Número de teléfono", form_special: "Peticiones especiales (alergias, celebración...)", form_submit: "Solicitar reserva", guests_2: "2 comensales", guests_4: "4 comensales", guests_6: "6 comensales", guests_8: "8+ comensales", visit_title: "Visítanos", address: "245 East 8th Street, Nueva York, NY 10009", hours: "Lun–Jue: 12pm – 10pm<br>Vie–Dom: 12pm – 11pm", footer_copyright: "© 2025 Rusco's Bistro Ruso. Un sabor a casa, lejos de casa.", footer_tagline: "Sirviendo con orgullo la cocina tradicional rusa en EE. UU.", form_error_name: "Por favor, introduzca su nombre.", form_success: "¡Gracias, {name}! Su solicitud ha sido enviada. Le llamaremos para confirmar en 2 horas."
+  },
+  fr: {
+    nav_home: "Accueil", nav_about: "À propos", nav_menu: "Menu", nav_reservations: "Réservations",
+    hero_title: "Âme russe,<br>maison américaine.",
+    hero_subtitle: "Bienvenue chez Rusco's — où les pelmeni sibériens rencontrent la chaleur de Brooklyn. Des recettes authentiques transmises de génération en génération, préparées avec amour au cœur des États-Unis.",
+    btn_reserve: "Réserver une table", btn_explore: "Découvrir le menu",
+    about_title: "Notre histoire", about_p1: "Nous sommes des gars ordinaires d'une petite ville de Russie — Nijnevartovsk. Alexey et Vladimir. Nous rêvions d'apporter toutes les saveurs de nos mères russes à un grand pays comme les États-Unis. Alors nous avons fait nos valises, les recettes de nos grands-mères et beaucoup d'amour pour la cuisine.", about_p2: "Aujourd'hui, chez Rusco's, nous partageons une cuisine qui a le goût de la maison. Nous espérons que vous apprécierez nos plats autant que nous aimons les préparer pour vous. Et si vous souhaitez dire un merci particulier, vous pouvez nous laisser un message ici même sur le site. Cordialement, Rusco's.",
+    feature_farm: "Fermier frais", feature_vodka: "Vodka artisanale russe", feature_family: "Entreprise familiale",
+    menu_title: "Plats signature", dish1_name: "Pelmeni Sibérie", dish1_desc: "Raviolis sibériens farcis au bœuf et porc, servis avec crème sure et aneth frais.", dish2_name: "Bortsch classique", dish2_desc: "Soupe copieuse de betterave et chou, mijotée avec du bœuf, finie avec une cuillerée de smetana.", dish3_name: "Bœuf Stroganoff", dish3_desc: "Lanières de bœuf tendres dans une sauce crémeuse aux champignons, servies avec purée de pommes de terre.", dish4_name: "Blini Rusco's", dish4_desc: "Crêpes russes fines au choix de caviar rouge, saumon, ou confiture classique avec lait concentré.",
+    full_menu_btn: "Menu complet et spéciaux", gallery_title: "À l'intérieur de Rusco's",
+    form_title: "Réserver une table", form_name: "Nom complet", form_email: "Adresse e-mail", form_phone: "Numéro de téléphone", form_special: "Demandes spéciales (allergies, célébration...)", form_submit: "Demander une réservation", guests_2: "2 convives", guests_4: "4 convives", guests_6: "6 convives", guests_8: "8+ convives", visit_title: "Visitez-nous", address: "245 East 8th Street, New York, NY 10009", hours: "Lun–Jeu: 12h – 22h<br>Ven–Dim: 12h – 23h", footer_copyright: "© 2025 Rusco's Bistro Russe. Un goût de maison loin de chez soi.", footer_tagline: "Fier de servir la cuisine traditionnelle russe aux États-Unis.", form_error_name: "Veuillez entrer votre nom.", form_success: "Merci, {name} ! Votre demande a été envoyée. Nous vous appellerons pour confirmer dans les 2 heures."
+  },
+  de: {
+    nav_home: "Startseite", nav_about: "Über uns", nav_menu: "Speisekarte", nav_reservations: "Reservierungen",
+    hero_title: "Russische Seele,<br>amerikanisches Zuhause.",
+    hero_subtitle: "Willkommen bei Rusco's — wo sibirische Pelmeni auf die Wärme Brooklyns treffen. Authentische Rezepte, die seit Generationen weitergegeben werden, mit Liebe im Herzen der USA zubereitet.",
+    btn_reserve: "Tisch reservieren", btn_explore: "Menü erkunden",
+    about_title: "Unsere Geschichte", about_p1: "Wir sind ganz normale Jungs aus einer kleinen Stadt in Russland — Nischnewartowsk. Alexey und Vladimir. Wir träumten davon, all die Aromen unserer russischen Mütter in ein großes Land wie die USA zu bringen. Also packten wir unsere Koffer, die Rezepte unserer Großmütter und jede Menge Liebe zum Kochen.", about_p2: "Jetzt teilen wir bei Rusco's Essen, das nach Zuhause schmeckt. Wir hoffen, dass Ihnen unsere Gerichte genauso gefallen, wie wir sie für Sie zubereiten. Und wenn Sie sich besonders bedanken möchten, können Sie uns hier auf der Website eine Nachricht hinterlassen. Herzliche Grüße, Rusco's.",
+    feature_farm: "Frisch vom Bauernhof", feature_vodka: "Russischer Handwerkswodka", feature_family: "Familienbetrieb",
+    menu_title: "Signature-Gerichte", dish1_name: "Pelmeni Sibirien", dish1_desc: "Handgemachte sibirische Teigtaschen mit Rind- und Schweinefleisch, serviert mit Sauerrahm und frischem Dill.", dish2_name: "Klassischer Borschtsch", dish2_desc: "Herzhafte Rote-Bete-Kohlsuppe, langsam mit Rindfleisch gekocht, mit einem Klecks Smetana.", dish3_name: "Beef Stroganoff", dish3_desc: "Zarte Rinderstreifen in cremiger Pilzsauce, serviert mit Kartoffelpüree.", dish4_name: "Blini Rusco's", dish4_desc: "Dünne russische Pfannkuchen mit roter Kaviar, Lachs oder klassischer Marmelade mit Kondensmilch.",
+    full_menu_btn: "Vollständige Speisekarte & Spezialitäten", gallery_title: "In Rusco's",
+    form_title: "Tisch reservieren", form_name: "Vollständiger Name", form_email: "E-Mail-Adresse", form_phone: "Telefonnummer", form_special: "Besondere Wünsche (Allergien, Feier...)", form_submit: "Anfrage senden", guests_2: "2 Gäste", guests_4: "4 Gäste", guests_6: "6 Gäste", guests_8: "8+ Gäste", visit_title: "Besuchen Sie uns", address: "245 East 8th Street, New York, NY 10009", hours: "Mo–Do: 12–22 Uhr<br>Fr–So: 12–23 Uhr", footer_copyright: "© 2025 Rusco's Russisches Bistro. Ein Hauch von Heimat, fern der Heimat.", footer_tagline: "Wir servieren stolz traditionelle russische Küche in den USA.", form_error_name: "Bitte geben Sie Ihren Namen ein.", form_success: "Danke, {name}! Ihre Anfrage wurde gesendet. Wir rufen Sie innerhalb von 2 Stunden zur Bestätigung an."
+  },
+  zh: {
+    nav_home: "首页", nav_about: "关于我们", nav_menu: "菜单", nav_reservations: "预订",
+    hero_title: "俄罗斯灵魂，<br>美国家园。",
+    hero_subtitle: "欢迎来到Rusco's — 西伯利亚饺子遇见布鲁克林的温暖。世代相传的正宗食谱，在美国中心用爱心制作。",
+    btn_reserve: "预订餐桌", btn_explore: "浏览菜单",
+    about_title: "我们的故事", about_p1: "我们是来自俄罗斯一个小镇的普通男孩——下瓦尔托夫斯克。阿列克谢和弗拉基米尔。我们梦想着把我们俄罗斯妈妈的所有风味带到一个像美国这样的大国。所以我们收拾好行李、奶奶们的食谱，以及满满的对烹饪的热爱。", about_p2: "现在，在Rusco's，我们分享有家味道的食物。希望您和我们一样喜欢我们的菜肴。如果您想特别说声谢谢，可以直接在网站上给我们留言。此致，Rusco's。",
+    feature_farm: "农场新鲜", feature_vodka: "俄罗斯手工伏特加", feature_family: "家族经营",
+    menu_title: "招牌菜", dish1_name: "西伯利亚饺子", dish1_desc: "手工西伯利亚饺子，馅料为牛肉和猪肉，配酸奶油和新鲜莳萝。", dish2_name: "经典罗宋汤", dish2_desc: "丰盛的甜菜卷心菜汤，与牛肉慢炖，最后加一勺酸奶油。", dish3_name: "牛肉斯特罗加诺夫", dish3_desc: "嫩牛肉条配奶油蘑菇酱，配土豆泥。", dish4_name: "Rusco's 薄饼", dish4_desc: "俄罗斯薄饼，可选择红鱼子酱、三文鱼或经典果酱加炼乳。",
+    full_menu_btn: "完整菜单和特色菜", gallery_title: "Rusco's 内部",
+    form_title: "预订餐桌", form_name: "全名", form_email: "电子邮件", form_phone: "电话号码", form_special: "特殊要求（过敏、庆祝...）", form_submit: "提交预订请求", guests_2: "2位客人", guests_4: "4位客人", guests_6: "6位客人", guests_8: "8位以上客人", visit_title: "访问我们", address: "纽约东8街245号, NY 10009", hours: "周一至周四: 中午12点–晚上10点<br>周五至周日: 中午12点–晚上11点", footer_copyright: "© 2025 Rusco's 俄罗斯小酒馆。远离家乡的家的味道。", footer_tagline: "自豪地在美国供应传统俄罗斯美食。", form_error_name: "请输入您的名字。", form_success: "谢谢，{name}！您的请求已发送。我们将在2小时内致电确认。"
+  },
+  ja: {
+    nav_home: "ホーム", nav_about: "私たちについて", nav_menu: "メニュー", nav_reservations: "予約",
+    hero_title: "ロシアの魂、<br>アメリカの家。",
+    hero_subtitle: "Rusco'sへようこそ — シベリアのペリメニがブルックリンの温もりと出会う場所。世代を超えて受け継がれた本格的なレシピを、アメリカの中心で愛情を込めて調理します。",
+    btn_reserve: "テーブル予約", btn_explore: "メニューを見る",
+    about_title: "私たちのストーリー", about_p1: "私たちはロシアの小さな町、ニジネヴァルトフスク出身のごく普通の男たちです。アレクセイとウラジミール。ロシアの母たちの味をすべてアメリカのような大きな国に届けることを夢見ていました。だからスーツケース、祖母のレシピ、そして料理への愛情をたっぷり詰め込んで来たのです。", about_p2: "今、Rusco'sで私たちは家庭の味を共有しています。私たちがあなたのために料理を作るのと同じくらい、あなたに私たちの料理を楽しんでもらいたいです。もし特別に感謝の気持ちを伝えたいなら、このサイトで直接メッセージを残してください。よろしくお願いします、Rusco's。",
+    feature_farm: "農場直送", feature_vodka: "ロシアのクラフトウォッカ", feature_family: "家族経営",
+    menu_title: "シグネチャーディッシュ", dish1_name: "ペリメニ シベリア", dish1_desc: "牛肉と豚肉を詰めた手作りのシベリア風餃子、サワークリームと新鮮なディルを添えて。", dish2_name: "クラシックボルシチ", dish2_desc: "ビーツとキャベツのボリュームスープ、牛肉でじっくり煮込み、スメタナをのせて。", dish3_name: "ビーフストロガノフ", dish3_desc: "クリーミーなマッシュルームソースの柔らかいビーフストリップ、マッシュポテト添え。", dish4_name: "ブリニ Rusco's", dish4_desc: "薄いロシアのクレープ、赤キャビア、サーモン、またはクラシックなジャムとコンデンスミルクから選択。",
+    full_menu_btn: "全メニューとスペシャル", gallery_title: "Rusco's の内部",
+    form_title: "テーブル予約", form_name: "フルネーム", form_email: "メールアドレス", form_phone: "電話番号", form_special: "特別なリクエスト（アレルギー、お祝いなど）", form_submit: "予約リクエスト", guests_2: "2名", guests_4: "4名", guests_6: "6名", guests_8: "8名以上", visit_title: "アクセス", address: "245 East 8th Street, New York, NY 10009", hours: "月–木: 12pm – 10pm<br>金–日: 12pm – 11pm", footer_copyright: "© 2025 Rusco's ロシアンビストロ。家から遠く離れた、家の味。", footer_tagline: "米国で伝統的なロシア料理を誇りを持って提供しています。", form_error_name: "名前を入力してください。", form_success: "{name}様、リクエストを送信しました。2時間以内に確認の電話を差し上げます。"
+  },
+  ar: {
+    nav_home: "الرئيسية", nav_about: "معلومات عنا", nav_menu: "قائمة الطعام", nav_reservations: "الحجوزات",
+    hero_title: "الروح الروسية،<br>البيت الأمريكي.",
+    hero_subtitle: "مرحبًا بكم في Rusco's — حيث يلتقي البلمني السيبيري بدفء بروكلين. وصفات أصلية تنتقل عبر الأجيال، محضرة بحب في قلب الولايات المتحدة.",
+    btn_reserve: "احجز طاولة", btn_explore: "استكشف القائمة",
+    about_title: "قصتنا", about_p1: "نحن شباب عاديون من بلدة صغيرة في روسيا — نيجنفارتوفسك. أليكسي وفلاديمير. حلمنا بنقل كل نكهات أمهاتنا الروسيات إلى بلد كبير مثل الولايات المتحدة. لذلك حزمنا حقائبنا ووصفات جداتنا والكثير من الحب للطهي.", about_p2: "الآن، في Rusco's، نشارك طعامًا طعمه الوطن. نأمل أن تستمتعوا بأطباقنا بقدر ما نستمتع بتحضيرها لكم. وإذا أردتم قول شكر خاص، يمكنكم ترك رسالة لنا هنا مباشرة على الموقع. مع أطيب التحيات، Rusco's.",
+    feature_farm: "طازج من المزرعة", feature_vodka: "فودكا روسية حرفية", feature_family: "ملكية عائلية",
+    menu_title: "أطباق مميزة", dish1_name: "بللمني سيبيريا", dish1_desc: "زلابية سيبيرية محشوة بلحم البقر والخنزير، تقدم مع الكريمة الحامضة والشبت الطازج.", dish2_name: "برش كلاسيكي", dish2_desc: "حساء الشمندر والملفوف الغني، مطهو ببطء مع اللحم البقري، يعلوه قشدة حامضة.", dish3_name: "لحم ستروجانوف", dish3_desc: "شرائح لحم بقري طرية في صلصة كريمة الفطر، تقدم مع البطاطس المهروسة.", dish4_name: "بليني Rusco's", dish4_desc: "فطائر روسية رقيقة مع خيار الكافيار الأحمر أو السلمون أو المربى الكلاسيكي مع الحليب المكثف.",
+    full_menu_btn: "القائمة الكاملة والخاصة", gallery_title: "داخل Rusco's",
+    form_title: "احجز طاولة", form_name: "الاسم الكامل", form_email: "البريد الإلكتروني", form_phone: "رقم الهاتف", form_special: "طلبات خاصة (حساسية، احتفال...)", form_submit: "إرسال طلب الحجز", guests_2: "2 ضيوف", guests_4: "4 ضيوف", guests_6: "6 ضيوف", guests_8: "8+ ضيوف", visit_title: "زورونا", address: "245 East 8th Street, New York, NY 10009", hours: "الاثنين–الخميس: 12 ظهرًا – 10 مساءً<br>الجمعة–الأحد: 12 ظهرًا – 11 مساءً", footer_copyright: "© 2025 Rusco's المطبخ الروسي. طعم المنزل بعيدًا عن المنزل.", footer_tagline: "نقدم بكل فخر المطبخ الروسي التقليدي في الولايات المتحدة.", form_error_name: "الرجاء إدخال اسمك.", form_success: "شكرًا {name}! تم إرسال طلبك. سنتصل بك للتأكيد خلال ساعتين."
+  },
+  it: {
+    nav_home: "Home", nav_about: "Chi siamo", nav_menu: "Menu", nav_reservations: "Prenotazioni",
+    hero_title: "Anima russa,<br>casa americana.",
+    hero_subtitle: "Benvenuti da Rusco's — dove i pelmeni siberiani incontrano il calore di Brooklyn. Ricette autentiche tramandate per generazioni, preparate con amore nel cuore degli USA.",
+    btn_reserve: "Prenota un tavolo", btn_explore: "Esplora il menu",
+    about_title: "La nostra storia", about_p1: "Siamo ragazzi normali di una piccola città russa — Nizhnevartovsk. Alexey e Vladimir. Sognavamo di portare tutti i sapori delle nostre mamme russe in un grande paese come gli Stati Uniti. Così abbiamo fatto le valigie, le ricette delle nostre nonne e tanto amore per la cucina.", about_p2: "Oggi, da Rusco's, condividiamo il cibo che sa di casa. Speriamo che i nostri piatti vi piacciano quanto piace a noi prepararli per voi. E se volete dire un grazie speciale, potete lasciarci un messaggio proprio qui sul sito. Cordiali saluti, Rusco's.",
+    feature_farm: "Fresco di fattoria", feature_vodka: "Vodka artigianale russa", feature_family: "Gestione familiare",
+    menu_title: "Piatti signature", dish1_name: "Pelmeni Siberia", dish1_desc: "Ravioli siberiani ripieni di manzo e maiale, serviti con panna acida e aneto fresco.", dish2_name: "Borscht classico", dish2_desc: "Zuppa sostanziosa di barbabietole e cavolo, cotta lentamente con manzo, finita con un cucchiaio di smetana.", dish3_name: "Manzo Stroganoff", dish3_desc: "Strisce tenere di manzo in salsa cremosa ai funghi, servite con purè di patate.", dish4_name: "Blini Rusco's", dish4_desc: "Crespelle russe sottili con scelta di caviale rosso, salmone o marmellata classica con latte condensato.",
+    full_menu_btn: "Menu completo e specialità", gallery_title: "Dentro Rusco's",
+    form_title: "Prenota un tavolo", form_name: "Nome completo", form_email: "Indirizzo email", form_phone: "Numero di telefono", form_special: "Richieste speciali (allergie, celebrazione...)", form_submit: "Richiedi prenotazione", guests_2: "2 ospiti", guests_4: "4 ospiti", guests_6: "6 ospiti", guests_8: "8+ ospiti", visit_title: "Visitaci", address: "245 East 8th Street, New York, NY 10009", hours: "Lun–Gio: 12:00 – 22:00<br>Ven–Dom: 12:00 – 23:00", footer_copyright: "© 2025 Rusco's Bistro Russo. Un sapore di casa lontano da casa.", footer_tagline: "Serviamo con orgoglio la cucina tradizionale russa negli USA.", form_error_name: "Inserisci il tuo nome.", form_success: "Grazie, {name}! La tua richiesta è stata inviata. Ti chiameremo per confermare entro 2 ore."
+  },
+  pt: {
+    nav_home: "Início", nav_about: "Sobre", nav_menu: "Cardápio", nav_reservations: "Reservas",
+    hero_title: "Alma russa,<br>lar americano.",
+    hero_subtitle: "Bem-vindo ao Rusco's — onde os pelmeni siberianos encontram o calor do Brooklyn. Receitas autênticas transmitidas por gerações, preparadas com amor no coração dos EUA.",
+    btn_reserve: "Reserve uma mesa", btn_explore: "Explorar cardápio",
+    about_title: "Nossa história", about_p1: "Somos caras comuns de uma cidade pequena na Rússia — Nizhnevartovsk. Alexey e Vladimir. Sonhávamos em trazer todos os sabores de nossas mães russas para um país grande como os EUA. Então fizemos as malas, as receitas de nossas avós e muito amor pela culinária.", about_p2: "Agora, no Rusco's, compartilhamos comida com sabor de lar. Esperamos que gostem dos nossos pratos tanto quanto gostamos de prepará-los para vocês. E se quiserem agradecer especialmente, podem deixar uma mensagem aqui mesmo no site. Atenciosamente, Rusco's.",
+    feature_farm: "Fresco da fazenda", feature_vodka: "Vodka artesanal russa", feature_family: "Negócio de família",
+    menu_title: "Pratos exclusivos", dish1_name: "Pelmeni Sibéria", dish1_desc: "Ravioli siberianos recheados com carne bovina e suína, servidos com creme azedo e endro fresco.", dish2_name: "Borscht clássico", dish2_desc: "Sopa substancial de beterraba e repolho, cozida lentamente com carne, finalizada com uma colherada de smetana.", dish3_name: "Carne Stroganoff", dish3_desc: "Tiras macias de carne em molho cremoso de cogumelos, servidas com purê de batatas.", dish4_name: "Blini Rusco's", dish4_desc: "Panquecas russas finas com escolha de caviar vermelho, salmão ou geleia clássica com leite condensado.",
+    full_menu_btn: "Cardápio completo e especiais", gallery_title: "Dentro do Rusco's",
+    form_title: "Reserve uma mesa", form_name: "Nome completo", form_email: "Endereço de e-mail", form_phone: "Número de telefone", form_special: "Pedidos especiais (alergias, celebração...)", form_submit: "Solicitar reserva", guests_2: "2 convidados", guests_4: "4 convidados", guests_6: "6 convidados", guests_8: "8+ convidados", visit_title: "Visite-nos", address: "245 East 8th Street, Nova York, NY 10009", hours: "Seg–Qui: 12h – 22h<br>Sex–Dom: 12h – 23h", footer_copyright: "© 2025 Rusco's Bistro Russo. Um gostinho de casa longe de casa.", footer_tagline: "Servindo com orgulho a culinária russa tradicional nos EUA.", form_error_name: "Por favor, insira seu nome.", form_success: "Obrigado, {name}! Seu pedido foi enviado. Ligaremos para confirmar em até 2 horas."
+  }
 };
+
 let currentLang = localStorage.getItem('ruscos_lang') || 'en';
-function applyLanguage(lang) { if (!translations[lang]) lang = 'en'; const t = translations[lang]; document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (t[key] !== undefined && !['INPUT','TEXTAREA','SELECT'].includes(el.tagName)) el.innerHTML = t[key]; }); document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.getAttribute('data-i18n-placeholder'); if (t[key] !== undefined) el.placeholder = t[key]; }); document.querySelectorAll('[data-i18n-select] option').forEach(opt => { const key = opt.getAttribute('data-i18n'); if (key && t[key]) opt.innerText = t[key]; }); const langNames = { en:'English', ru:'Русский', es:'Español', fr:'Français', de:'Deutsch', zh:'中文', ja:'日本語', ar:'العربية', it:'Italiano', pt:'Português' }; document.getElementById('currentLangLabel').innerText = langNames[lang] || 'English'; localStorage.setItem('ruscos_lang', lang); currentLang = lang; }
-document.getElementById('langSwitcherBtn').addEventListener('click', (e) => { e.stopPropagation(); document.getElementById('langDropdown').classList.toggle('active'); });
-document.querySelectorAll('.lang-option').forEach(opt => { opt.addEventListener('click', () => { const langCode = opt.getAttribute('data-lang'); applyLanguage(langCode); document.getElementById('langDropdown').classList.remove('active'); document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active-lang')); opt.classList.add('active-lang'); }); });
-document.addEventListener('click', (e) => { const btn = document.getElementById('langSwitcherBtn'); const drop = document.getElementById('langDropdown'); if (!btn.contains(e.target) && !drop.contains(e.target)) drop.classList.remove('active'); });
+
+function applyLanguage(lang) {
+  if (!translations[lang]) lang = 'en';
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined && !['INPUT','TEXTAREA','SELECT'].includes(el.tagName)) {
+      el.innerHTML = t[key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+  document.querySelectorAll('[data-i18n-select] option').forEach(opt => {
+    const key = opt.getAttribute('data-i18n');
+    if (key && t[key]) opt.innerText = t[key];
+  });
+  const langNames = { en:'English', ru:'Русский', es:'Español', fr:'Français', de:'Deutsch', zh:'中文', ja:'日本語', ar:'العربية', it:'Italiano', pt:'Português' };
+  document.getElementById('currentLangLabel').innerText = langNames[lang] || 'English';
+  localStorage.setItem('ruscos_lang', lang);
+  currentLang = lang;
+}
+
+// Language switcher
+const langBtn = document.getElementById('langSwitcherBtn');
+const langDropdown = document.getElementById('langDropdown');
+langBtn.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('active'); });
+document.querySelectorAll('.lang-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const langCode = opt.getAttribute('data-lang');
+    applyLanguage(langCode);
+    langDropdown.classList.remove('active');
+    document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active-lang'));
+    opt.classList.add('active-lang');
+  });
+});
+document.addEventListener('click', (e) => { if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) langDropdown.classList.remove('active'); });
+
+// Mobile menu
 document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('nav-active'));
 document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('nav-active')));
-document.getElementById('bookingForm').addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('name').value.trim(); if (!name) { document.getElementById('formMessage').innerHTML = translations[currentLang]?.form_error_name || 'Please enter your name.'; return; } let msg = (translations[currentLang]?.form_success || 'Thank you, {name}! Your request has been sent. We’ll call you to confirm within 2 hours.').replace('{name}', name); document.getElementById('formMessage').innerHTML = msg; e.target.reset(); setTimeout(() => document.getElementById('formMessage').innerHTML = '', 5000); });
+
+// Booking form
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  if (!name) {
+    document.getElementById('formMessage').innerHTML = translations[currentLang]?.form_error_name || 'Please enter your name.';
+    return;
+  }
+  let msg = (translations[currentLang]?.form_success || 'Thank you, {name}! Your request has been sent. We’ll call you to confirm within 2 hours.').replace('{name}', name);
+  document.getElementById('formMessage').innerHTML = msg;
+  e.target.reset();
+  setTimeout(() => document.getElementById('formMessage').innerHTML = '', 5000);
+});
+
 applyLanguage(currentLang);
 document.querySelectorAll('.lang-option').forEach(opt => { if (opt.getAttribute('data-lang') === currentLang) opt.classList.add('active-lang'); });
 </script>
