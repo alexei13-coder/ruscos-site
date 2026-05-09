@@ -173,10 +173,184 @@ const menuData = {
     home: "Accueil", about: "À propos", menu: "Menu", reservations: "Réservations", footer: "© 2025 Rusco's Bistro Russe. Un goût de maison loin de chez soi.",
     page_title: "Notre menu complet", page_sub: "Plats russes authentiques faits maison, préparés avec amour.",
     cat_soups: "🥣 Soupes", cat_hot: "🔥 Plats chauds", cat_salads: "🥗 Salades et entrées", cat_desserts: "🥞 Crêpes et desserts", cat_drinks: "🧃 Boissons sans alcool", cat_alcohol: "🍸 Alcool",
-    items: { /* аналогично, для краткости оставлю как есть, в полной версии все переводы присутствуют */ }
+    items: {
+      "Borscht": { price: "$9", desc: "Soupe traditionnelle de betterave avec bœuf, chou et une cuillerée de crème sure." },
+      "Shchi": { price: "$8", desc: "Soupe copieuse au chou avec du bœuf tendre, servie avec du pain de seigle." },
+      "Solyanka": { price: "$10", desc: "Soupe riche et acidulée aux viandes variées, olives et citron." },
+      "Ukha": { price: "$11", desc: "Soupe de poisson claire au saumon, cabillaud, pommes de terre et aneth." },
+      "Okroshka": { price: "$8", desc: "Soupe froide à base de kvass avec œufs, concombre, radis et jambon." },
+      "Rassolnik": { price: "$9", desc: "Soupe aux cornichons et à l'orge avec rognon de bœuf ou bœuf." },
+      "Pelmeni": { price: "$14", desc: "Raviolis sibériens farcis au bœuf et porc, servis avec de la crème sure." },
+      "Vareniki": { price: "$13", desc: "Raviolis ukrainiens aux pommes de terre et oignons ou aux cerises (sucrés)." },
+      "Kotlety s pure": { price: "$16", desc: "Galettes juteuses de poulet/bœuf avec purée de pommes de terre onctueuse." },
+      "Golubtsy": { price: "$15", desc: "Rouleaux de chou farcis au riz et à la viande, cuits au four en sauce tomate." },
+      "Vinegret": { price: "$7", desc: "Salade de betteraves aux pommes de terre, carottes, cornichons et petits pois." },
+      "Seledka pod shuboy": { price: "$9", desc: "Salade de hareng en couches avec betteraves, carottes, pommes de terre et mayonnaise." },
+      "Syrniki": { price: "$8", desc: "Pancakes au fromage blanc, servis avec crème sure et confiture de baies." },
+      "Blini": { price: "$10", desc: "Crêpes russes fines au choix de caviar rouge, saumon ou confiture." },
+      "Kvass": { price: "$5", desc: "Boisson traditionnelle à base de pain de seigle fermenté, légèrement sucrée et rafraîchissante." },
+      "Kisel": { price: "$4", desc: "Boisson épaisse aux baies (canneberges ou cerises), servie chaude ou froide." },
+      "Mors": { price: "$5", desc: "Boisson aux fruits du Nord à base d'airelles ou de canneberges." },
+      "Kompot": { price: "$4", desc: "Compote maison de fruits secs, servie fraîche." },
+      "Vodka": { price: "$7", desc: "Vodka russe de blé (5 cl) — servie glacée." }
+    }
   },
-  // Для остальных языков (de, zh, ja, ar, it, pt) нужно добавить аналогичные переводы.
-  // В целях экономии места я сократил, но вы можете легко добавить их по шаблону.
+  de: {
+    home: "Startseite", about: "Über uns", menu: "Speisekarte", reservations: "Reservierungen", footer: "© 2025 Rusco's Russisches Bistro. Ein Hauch von Heimat, fern der Heimat.",
+    page_title: "Unsere vollständige Speisekarte", page_sub: "Authentische russische Hausmannskost, mit Liebe zubereitet.",
+    cat_soups: "🥣 Suppen", cat_hot: "🔥 Warme Gerichte", cat_salads: "🥗 Salate & Vorspeisen", cat_desserts: "🥞 Pfannkuchen & Desserts", cat_drinks: "🧃 Alkoholfreie Getränke", cat_alcohol: "🍸 Alkohol",
+    items: {
+      "Borscht": { price: "$9", desc: "Traditionelle Rote-Bete-Suppe mit Rindfleisch, Kohl und einem Klecks Sauerrahm." },
+      "Shchi": { price: "$8", desc: "Herzhafte Kohlsuppe mit zartem Rindfleisch, serviert mit Roggenbrot." },
+      "Solyanka": { price: "$10", desc: "Reichhaltige, würzige Suppe mit verschiedenen Fleischsorten, Oliven und Zitrone." },
+      "Ukha": { price: "$11", desc: "Klare Fischsuppe mit Lachs, Kabeljau, Kartoffeln und Dill." },
+      "Okroshka": { price: "$8", desc: "Kalte Kvass-Suppe mit Eiern, Gurke, Radieschen und Schinken." },
+      "Rassolnik": { price: "$9", desc: "Gurkensuppe mit Gerste und Rinderniere oder Rindfleisch." },
+      "Pelmeni": { price: "$14", desc: "Sibirische Teigtaschen gefüllt mit Rind- und Schweinefleisch, serviert mit Sauerrahm." },
+      "Vareniki": { price: "$13", desc: "Ukrainische Teigtaschen mit Kartoffel & Zwiebel oder Kirschen (süß)." },
+      "Kotlety s pure": { price: "$16", desc: "Saftige Hühnchen-/Rindfleischfrikadellen mit cremigem Kartoffelpüree." },
+      "Golubtsy": { price: "$15", desc: "Kohlrouladen gefüllt mit Reis und Fleisch, in Tomatensauce gebacken." },
+      "Vinegret": { price: "$7", desc: "Rote-Bete-Salat mit Kartoffeln, Karotten, Gurken und Erbsen." },
+      "Seledka pod shuboy": { price: "$9", desc: "Geschichteter Hering-Salat mit Roter Bete, Karotten, Kartoffeln und Mayonnaise." },
+      "Syrniki": { price: "$8", desc: "Quarkpfannkuchen, serviert mit Sauerrahm und Beerenmarmelade." },
+      "Blini": { price: "$10", desc: "Dünne russische Pfannkuchen mit rotem Kaviar, Lachs oder Marmelade." },
+      "Kvass": { price: "$5", desc: "Traditionelles fermentiertes Roggenbrotgetränk, leicht süß und erfrischend." },
+      "Kisel": { price: "$4", desc: "Dickes Beerengetränk (Preiselbeere oder Kirsche), warm oder kalt serviert." },
+      "Mors": { price: "$5", desc: "Nördliches Beerenfruchtgetränk aus Preiselbeeren oder Moosbeeren." },
+      "Kompot": { price: "$4", desc: "Hausgemachtes Trockenobstkompott, gekühlt serviert." },
+      "Vodka": { price: "$7", desc: "Russischer Weizenwodka (4 cl) — eiskalt serviert." }
+    }
+  },
+  zh: {
+    home: "首页", about: "关于我们", menu: "菜单", reservations: "预订", footer: "© 2025 Rusco's 俄罗斯小酒馆。远离家乡的家的味道。",
+    page_title: "完整菜单", page_sub: "地道的俄罗斯家常菜，用心制作。",
+    cat_soups: "🥣 汤", cat_hot: "🔥 热菜", cat_salads: "🥗 沙拉与开胃菜", cat_desserts: "🥞 煎饼与甜点", cat_drinks: "🧃 软饮", cat_alcohol: "🍸 酒精饮料",
+    items: {
+      "Borscht": { price: "$9", desc: "传统红菜汤，配牛肉、卷心菜和酸奶油。" },
+      "Shchi": { price: "$8", desc: "丰盛的卷心菜汤，配嫩牛肉，与黑麦面包一起食用。" },
+      "Solyanka": { price: "$10", desc: "浓郁酸味汤，配多种肉类、橄榄和柠檬。" },
+      "Ukha": { price: "$11", desc: "清鱼汤，配三文鱼、鳕鱼、土豆和莳萝。" },
+      "Okroshka": { price: "$8", desc: "用克瓦斯制作的冷汤，配鸡蛋、黄瓜、萝卜和火腿。" },
+      "Rassolnik": { price: "$9", desc: "泡菜大麦汤，配牛腰子或牛肉。" },
+      "Pelmeni": { price: "$14", desc: "西伯利亚饺子，填充牛肉和猪肉，配酸奶油。" },
+      "Vareniki": { price: "$13", desc: "乌克兰饺子，土豆洋葱馅或樱桃馅（甜）。" },
+      "Kotlety s pure": { price: "$16", desc: "多汁的鸡肉/牛肉饼，配奶油土豆泥。" },
+      "Golubtsy": { price: "$15", desc: "包菜卷，填充米饭和肉，烤制配番茄酱。" },
+      "Vinegret": { price: "$7", desc: "甜菜沙拉，配土豆、胡萝卜、泡菜和豌豆。" },
+      "Seledka pod shuboy": { price: "$9", desc: "分层鲱鱼沙拉，配甜菜、胡萝卜、土豆和蛋黄酱。" },
+      "Syrniki": { price: "$8", desc: "奶酪煎饼，配酸奶油和浆果酱。" },
+      "Blini": { price: "$10", desc: "薄俄罗斯煎饼，可选红鱼子酱、三文鱼或果酱。" },
+      "Kvass": { price: "$5", desc: "传统的发酵黑麦面包饮料，微甜清爽。" },
+      "Kisel": { price: "$4", desc: "浓稠的浆果饮料（蔓越莓或樱桃），冷热皆宜。" },
+      "Mors": { price: "$5", desc: "用越橘或蔓越莓制作的北方浆果汁。" },
+      "Kompot": { price: "$4", desc: "自制干果蜜饯，冷藏后食用。" },
+      "Vodka": { price: "$7", desc: "俄式小麦伏特加（50毫升）——冰镇饮用。" }
+    }
+  },
+  ja: {
+    home: "ホーム", about: "私たちについて", menu: "メニュー", reservations: "予約", footer: "© 2025 Rusco's ロシアンビストロ。家から遠く離れた、家の味。",
+    page_title: "フルメニュー", page_sub: "本格的なロシアの家庭料理。愛情を込めて調理。",
+    cat_soups: "🥣 スープ", cat_hot: "🔥 温かい料理", cat_salads: "🥗 サラダ・前菜", cat_desserts: "🥞 パンケーキ・デザート", cat_drinks: "🧃 ソフトドリンク", cat_alcohol: "🍸 アルコール",
+    items: {
+      "Borscht": { price: "$9", desc: "ビーツ、牛肉、キャベツ、サワークリームの伝統的なスープ。" },
+      "Shchi": { price: "$8", desc: "柔らかい牛肉入りのキャベツスープ。ライ麦パンを添えて。" },
+      "Solyanka": { price: "$10", desc: "様々な肉、オリーブ、レモンの濃厚な酸味のあるスープ。" },
+      "Ukha": { price: "$11", desc: "サーモン、タラ、ジャガイモ、ディルの澄んだ魚スープ。" },
+      "Okroshka": { price: "$8", desc: "クワスベースの冷製スープ。卵、キュウリ、大根、ハム入り。" },
+      "Rassolnik": { price: "$9", desc: "ピクルスと大麦のスープ。牛の腎臓または牛肉。" },
+      "Pelmeni": { price: "$14", desc: "牛肉と豚肉を詰めたシベリア風餃子。サワークリーム添え。" },
+      "Vareniki": { price: "$13", desc: "ウクライナ風餃子。ポテト＆オニオン、またはチェリー（甘口）。" },
+      "Kotlety s pure": { price: "$16", desc: "ジューシーなチキン／ビーフパティ、クリーミーなマッシュポテト添え。" },
+      "Golubtsy": { price: "$15", desc: "米と肉を詰めたキャベツロール。トマトソースで焼き上げ。" },
+      "Vinegret": { price: "$7", desc: "ビーツのサラダ。ジャガイモ、ニンジン、ピクルス、グリンピース。" },
+      "Seledka pod shuboy": { price: "$9", desc: "ニシンのサラダ（毛皮のコート風）。ビーツ、ニンジン、ジャガイモ、マヨネーズ。" },
+      "Syrniki": { price: "$8", desc: "カッテージチーズのパンケーキ。サワークリームとベリージャム添え。" },
+      "Blini": { price: "$10", desc: "薄いロシア風クレープ。赤キャビア、サーモン、またはジャムから選択。" },
+      "Kvass": { price: "$5", desc: "伝統的な発酵ライ麦パン飲料。ほんのり甘く爽やか。" },
+      "Kisel": { price: "$4", desc: "とろりとしたベリードリンク（クランベリーまたはチェリー）。温冷可。" },
+      "Mors": { price: "$5", desc: "コケモモやクランベリーを使った北のベリーフルーツドリンク。" },
+      "Kompot": { price: "$4", desc: "自家製ドライフルーツのコンポート。冷やして提供。" },
+      "Vodka": { price: "$7", desc: "ロシア産小麦ウォッカ（50ml）——氷冷で。" }
+    }
+  },
+  ar: {
+    home: "الرئيسية", about: "معلومات عنا", menu: "قائمة الطعام", reservations: "الحجوزات", footer: "© 2025 Rusco's المطبخ الروسي. طعم المنزل بعيدًا عن المنزل.",
+    page_title: "قائمة الطعام الكاملة", page_sub: "أطباق روسية أصلية منزلية الطعم، محضرة بحب.",
+    cat_soups: "🥣 شوربات", cat_hot: "🔥 أطباق ساخنة", cat_salads: "🥗 سلطات ومقبلات", cat_desserts: "🥞 بان كيك وحلويات", cat_drinks: "🧃 مشروبات غازية", cat_alcohol: "🍸 كحول",
+    items: {
+      "Borscht": { price: "$9", desc: "شوربة شمندر تقليدية مع لحم بقري وكرنب وملعقة كريمة حامضة." },
+      "Shchi": { price: "$8", desc: "شوربة كرنب شهية مع لحم بقري طري، تقدم مع خبز الجاودار." },
+      "Solyanka": { price: "$10", desc: "شوربة حامضة غنية بلحوم متنوعة وزيتون وليمون." },
+      "Ukha": { price: "$11", desc: "شوربة سمك صافية مع سلمون وسمك القد و بطاطس وشبت." },
+      "Okroshka": { price: "$8", desc: "شوربة باردة بالكفاس مع بيض وخيار وفجل وهام." },
+      "Rassolnik": { price: "$9", desc: "شوربة مخلل وشعير مع كلى لحم بقري أو لحم." },
+      "Pelmeni": { price: "$14", desc: "زلابية سيبيرية محشوة بلحم الخنزير والبقر، تقدم مع كريمة حامضة." },
+      "Vareniki": { price: "$13", desc: "زلابية أوكرانية بالبطاطس والبصل أو بالكرز (حلو)." },
+      "Kotlety s pure": { price: "$16", desc: "أقراص دجاج/لحم بقري عصارية مع مهروس بطاطس كريمي." },
+      "Golubtsy": { price: "$15", desc: "لفائف ملفوف محشوة بالأرز واللحم، مخبوزة بصلصة الطماطم." },
+      "Vinegret": { price: "$7", desc: "سلطة شمندر مع بطاطس وجزر ومخلل وبازلاء." },
+      "Seledka pod shuboy": { price: "$9", desc: "سلطة رنجة متعددة الطبقات مع شمندر وجزر وبطاطس ومايونيز." },
+      "Syrniki": { price: "$8", desc: "فطائر جبن قريش، تقدم مع كريمة حامضة ومربى التوت." },
+      "Blini": { price: "$10", desc: "فطائر روسية رقيقة مع خيار كافيار أحمر أو سلمون أو مربى." },
+      "Kvass": { price: "$5", desc: "شراب خبز الجاودار المخمر التقليدي، حلو قليلاً ومنعش." },
+      "Kisel": { price: "$4", desc: "شراب توت كثيف (توت بري أو كرز)، يقدم ساخناً أو بارداً." },
+      "Mors": { price: "$5", desc: "شراب فواكه التوت الشمالي من عنب الثعلب أو التوت البري." },
+      "Kompot": { price: "$4", desc: "كومبوت فواكه مجففة منزلي، يقدم مبرداً." },
+      "Vodka": { price: "$7", desc: "فودكا قمح روسي (50 مل) — تقدم مثلجة." }
+    }
+  },
+  it: {
+    home: "Home", about: "Chi siamo", menu: "Menu", reservations: "Prenotazioni", footer: "© 2025 Rusco's Bistro Russo. Un sapore di casa lontano da casa.",
+    page_title: "Il nostro menu completo", page_sub: "Piatti russi autentici fatti in casa, preparati con amore.",
+    cat_soups: "🥣 Zuppe", cat_hot: "🔥 Piatti caldi", cat_salads: "🥗 Insalate e antipasti", cat_desserts: "🥞 Frittelle e dessert", cat_drinks: "🧃 Bevande analcoliche", cat_alcohol: "🍸 Alcolici",
+    items: {
+      "Borscht": { price: "$9", desc: "Zuppa tradizionale di barbabietole con manzo, cavolo e un cucchiaio di panna acida." },
+      "Shchi": { price: "$8", desc: "Zuppa sostanziosa di cavolo con tenero manzo, servita con pane di segale." },
+      "Solyanka": { price: "$10", desc: "Zuppa ricca e aspra con carni miste, olive e limone." },
+      "Ukha": { price: "$11", desc: "Zuppa chiara di pesce con salmone, merluzzo, patate e aneto." },
+      "Okroshka": { price: "$8", desc: "Zuppa fredda a base di kvass con uova, cetriolo, ravanello e prosciutto." },
+      "Rassolnik": { price: "$9", desc: "Zuppa di cetrioli e orzo con rognone o manzo." },
+      "Pelmeni": { price: "$14", desc: "Ravioli siberiani ripieni di manzo e maiale, serviti con panna acida." },
+      "Vareniki": { price: "$13", desc: "Ravioli ucraini con patate e cipolle o con ciliegie (dolci)." },
+      "Kotlety s pure": { price: "$16", desc: "Polpette succose di pollo/manzo con purè di patate cremoso." },
+      "Golubtsy": { price: "$15", desc: "Involtini di cavolo ripieni di riso e carne, cotti al forno in salsa di pomodoro." },
+      "Vinegret": { price: "$7", desc: "Insalata di barbabietole con patate, carote, cetrioli e piselli." },
+      "Seledka pod shuboy": { price: "$9", desc: "Insalata di aringhe a strati con barbabietole, carote, patate e maionese." },
+      "Syrniki": { price: "$8", desc: "Frittelle di ricotta, servite con panna acida e marmellata di frutti di bosco." },
+      "Blini": { price: "$10", desc: "Crespelle russe sottili con scelta di caviale rosso, salmone o marmellata." },
+      "Kvass": { price: "$5", desc: "Bevanda tradizionale a base di pane di segale fermentato, leggermente dolce e rinfrescante." },
+      "Kisel": { price: "$4", desc: "Bevanda densa di frutti di bosco (mirtilli rossi o ciliegie), servita calda o fredda." },
+      "Mors": { price: "$5", desc: "Bevanda settentrionale di frutti di bosco a base di mirtilli rossi o mirtilli." },
+      "Kompot": { price: "$4", desc: "Compota di frutta secca fatta in casa, servita fredda." },
+      "Vodka": { price: "$7", desc: "Vodka russa di grano (50 ml) — servita ghiacciata." }
+    }
+  },
+  pt: {
+    home: "Início", about: "Sobre", menu: "Cardápio", reservations: "Reservas", footer: "© 2025 Rusco's Bistro Russo. Um gostinho de casa longe de casa.",
+    page_title: "Cardápio completo", page_sub: "Pratos russos autênticos caseiros, preparados com amor.",
+    cat_soups: "🥣 Sopas", cat_hot: "🔥 Pratos quentes", cat_salads: "🥗 Saladas e entradas", cat_desserts: "🥞 Panquecas e sobremesas", cat_drinks: "🧃 Bebidas não alcoólicas", cat_alcohol: "🍸 Alcoólicas",
+    items: {
+      "Borscht": { price: "$9", desc: "Sopa tradicional de beterraba com carne, repolho e uma colherada de creme azedo." },
+      "Shchi": { price: "$8", desc: "Sopa substanciosa de repolho com carne tenra, servida com pão de centeio." },
+      "Solyanka": { price: "$10", desc: "Sopa rica e ácida com carnes variadas, azeitonas e limão." },
+      "Ukha": { price: "$11", desc: "Sopa clara de peixe com salmão, bacalhau, batatas e endro." },
+      "Okroshka": { price: "$8", desc: "Sopa fria à base de kvass com ovos, pepino, rabanete e presunto." },
+      "Rassolnik": { price: "$9", desc: "Sopa de picles e cevada com rim ou carne bovina." },
+      "Pelmeni": { price: "$14", desc: "Ravióis siberianos recheados com carne de porco e vaca, servidos com creme azedo." },
+      "Vareniki": { price: "$13", desc: "Ravióis ucranianos com batata e cebola, ou cerejas (doce)." },
+      "Kotlety s pure": { price: "$16", desc: "Hambúrgueres suculentos de frango/carne com puré de batatas cremoso." },
+      "Golubtsy": { price: "$15", desc: "Rolos de couve recheados com arroz e carne, assados em molho de tomate." },
+      "Vinegret": { price: "$7", desc: "Salada de beterraba com batatas, cenouras, picles e ervilhas." },
+      "Seledka pod shuboy": { price: "$9", desc: "Salada de arenque em camadas com beterrabas, cenouras, batatas e maionese." },
+      "Syrniki": { price: "$8", desc: "Panquecas de queijo cottage, servidas com creme azedo e geleia de frutas vermelhas." },
+      "Blini": { price: "$10", desc: "Crepes russos finos com escolha de caviar vermelho, salmão ou geleia." },
+      "Kvass": { price: "$5", desc: "Bebida tradicional de pão de centeio fermentado, ligeiramente doce e refrescante." },
+      "Kisel": { price: "$4", desc: "Bebida espessa de frutos silvestres (cranberry ou cereja), servida quente ou fria." },
+      "Mors": { price: "$5", desc: "Bebida de frutos silvestres do norte feita de mirtilos ou arandos." },
+      "Kompot": { price: "$4", desc: "Compota caseira de frutos secos, servida fria." },
+      "Vodka": { price: "$7", desc: "Vodka russa de trigo (50 ml) — servida geladíssima." }
+    }
+  }
 };
 
 let currentLang = localStorage.getItem('ruscos_lang') || 'en';
@@ -213,7 +387,8 @@ function renderMenu(lang) {
     const key = el.getAttribute('data-i18n');
     if (data[key]) el.textContent = data[key];
   });
-  document.getElementById('currentLangLabel').innerText = (lang === 'ru' ? 'Русский' : lang === 'es' ? 'Español' : lang === 'fr' ? 'Français' : lang === 'de' ? 'Deutsch' : lang === 'zh' ? '中文' : lang === 'ja' ? '日本語' : lang === 'ar' ? 'العربية' : lang === 'it' ? 'Italiano' : lang === 'pt' ? 'Português' : 'English');
+  const langNames = { en:'English', ru:'Русский', es:'Español', fr:'Français', de:'Deutsch', zh:'中文', ja:'日本語', ar:'العربية', it:'Italiano', pt:'Português' };
+  document.getElementById('currentLangLabel').innerText = langNames[lang] || 'English';
 }
 
 function setLanguage(lang) {
@@ -224,7 +399,7 @@ function setLanguage(lang) {
   }
 }
 
-// Языковой переключатель
+// Language switcher
 const langBtn = document.getElementById('langSwitcherBtn');
 const langDropdown = document.getElementById('langDropdown');
 langBtn.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('active'); });
