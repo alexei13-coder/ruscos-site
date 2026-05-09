@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rusco's | Full Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background-color: #fffcf8; color: #2c2b28; line-height: 1.5; }
+    h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .lang-switcher { position: fixed; top: 20px; left: 20px; z-index: 1001; background: #b3470c; color: white; border-radius: 40px; padding: 8px 16px; cursor: pointer; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: none; }
+    .lang-switcher:hover { background: #8e3a08; }
+    .lang-dropdown { position: fixed; top: 70px; left: 20px; background: white; border-radius: 24px; box-shadow: 0 12px 28px rgba(0,0,0,0.2); z-index: 1000; width: 220px; display: none; border: 1px solid #f0e0d0; }
+    .lang-dropdown.active { display: block; }
+    .lang-option { padding: 12px 18px; cursor: pointer; display: flex; gap: 10px; border-bottom: 1px solid #f5ede5; }
+    .lang-option:hover { background: #fef0e6; }
+    .lang-option.active-lang { background: #b3470c20; font-weight: 600; color: #b3470c; }
+    header { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; max-width: 1360px; margin: 0 auto; }
+    .logo { font-size: 28px; font-weight: 700; color: #b3470c; }
+    .logo span { font-size: 20px; font-weight: 400; color: #5a3e2b; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #2c2b28; transition: 0.2s; }
+    .nav-links a:hover { color: #b3470c; }
+    .menu-page { padding: 60px 0; }
+    .menu-section { margin-bottom: 60px; }
+    .menu-section h2 { font-size: 32px; margin-bottom: 32px; color: #b3470c; border-left: 5px solid #b3470c; padding-left: 20px; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; }
+    .menu-item { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.2s; padding: 20px; border: 1px solid #f0e6dc; }
+    .menu-item:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .menu-item h3 { font-size: 22px; display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .price { color: #b3470c; font-weight: 700; }
+    .menu-item p { color: #6b5e51; font-size: 14px; margin-top: 8px; }
+    footer { background: #1e1915; color: #d9cdbf; padding: 40px 0; text-align: center; margin-top: 40px; }
+    .footer-links a { color: #dcb48b; text-decoration: none; margin: 0 15px; }
+    @media (max-width: 700px) { .lang-switcher { top: 12px; left: 12px; } .menu-section h2 { font-size: 26px; } }
+  </style>
+</head>
+<body>
+
+<button class="lang-switcher" id="langSwitcherBtn"><i class="fas fa-globe"></i> <span id="currentLangLabel">English</span></button>
+<div class="lang-dropdown" id="langDropdown">
+  <div class="lang-option" data-lang="en">🇬🇧 English</div>
+  <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
+  <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+  <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+  <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+  <div class="lang-option" data-lang="zh">🇨🇳 中文</div>
+  <div class="lang-option" data-lang="ja">🇯🇵 日本語</div>
+  <div class="lang-option" data-lang="ar">🇸🇦 العربية</div>
+  <div class="lang-option" data-lang="it">🇮🇹 Italiano</div>
+  <div class="lang-option" data-lang="pt">🇵🇹 Português</div>
+</div>
+
+<header>
+  <nav>
+    <div class="logo">RUSCO'S <span>Russian Bistro</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="home">Home</a></li>
+      <li><a href="index.html#about" data-i18n="about">About</a></li>
+      <li><a href="#" style="color:#b3470c;" data-i18n="menu">Menu</a></li>
+      <li><a href="index.html#contact" data-i18n="reservations">Reservations</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container menu-page">
+  <h1 style="font-size: 48px; text-align: center; margin-bottom: 20px;" data-i18n="page_title">Our Full Menu</h1>
+  <p style="text-align: center; margin-bottom: 50px; color: #5a4a3a;" data-i18n="page_sub">Authentic Russian home-style dishes, prepared with love.</p>
+
+  <!-- Супы -->
+  <div class="menu-section">
+    <h2 data-i18n="cat_soups">🥣 Soups</h2>
+    <div class="menu-grid" id="soups-grid"></div>
+  </div>
+  <!-- Горячие блюда -->
+  <div class="menu-section">
+    <h2 data-i18n="cat_hot">🔥 Hot Dishes</h2>
+    <div class="menu-grid" id="hot-grid"></div>
+  </div>
+  <!-- Закуски и салаты -->
+  <div class="menu-section">
+    <h2 data-i18n="cat_salads">🥗 Salads & Starters</h2>
+    <div class="menu-grid" id="salads-grid"></div>
+  </div>
+  <!-- Блины и десерты -->
+  <div class="menu-section">
+    <h2 data-i18n="cat_desserts">🥞 Pancakes & Desserts</h2>
+    <div class="menu-grid" id="desserts-grid"></div>
+  </div>
+  <!-- Безалкогольные напитки -->
+  <div class="menu-section">
+    <h2 data-i18n="cat_drinks">🧃 Soft Drinks</h2>
+    <div class="menu-grid" id="drinks-grid"></div>
+  </div>
+  <!-- Алкоголь -->
+  <div class="menu-section">
+    <h2 data-i18n="cat_alcohol">🍸 Alcohol</h2>
+    <div class="menu-grid" id="alcohol-grid"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html" data-i18n="home">Home</a>
+    <a href="index.html#about" data-i18n="about">About</a>
+    <a href="#" data-i18n="menu">Menu</a>
+    <a href="index.html#contact" data-i18n="reservations">Reservations</a>
+  </div>
+  <p data-i18n="footer">© 2025 Rusco's Russian Bistro. A taste of home, far from home.</p>
+</footer>
+
+<script>
+const menuData = {
+  en: {
+    home: "Home", about: "About", menu: "Menu", reservations: "Reservations",
+    page_title: "Our Full Menu", page_sub: "Authentic Russian home-style dishes, prepared with love.",
+    cat_soups: "🥣 Soups", cat_hot: "🔥 Hot Dishes", cat_salads: "🥗 Salads & Starters", cat_desserts: "🥞 Pancakes & Desserts", cat_drinks: "🧃 Soft Drinks", cat_alcohol: "🍸 Alcohol",
+    items: {
+      "Borscht": { price: "$9", desc: "Traditional beet soup with beef, cabbage, and a dollop of sour cream." },
+      "Shchi": { price: "$8", desc: "Hearty cabbage soup with tender beef, served with rye bread." },
+      "Solyanka": { price: "$10", desc: "Rich, tangy soup with assorted meats, olives, and lemon." },
+      "Ukha": { price: "$11", desc: "Clear fish soup with salmon, cod, potatoes, and dill." },
+      "Okroshka": { price: "$8", desc: "Cold kvass-based soup with eggs, cucumber, radish, and ham." },
+      "Rassolnik": { price: "$9", desc: "Pickle and barley soup with beef kidney or beef." },
+      "Pelmeni": { price: "$14", desc: "Siberian dumplings stuffed with beef & pork, served with sour cream." },
+      "Vareniki": { price: "$13", desc: "Ukrainian dumplings with potato & onion, or cherries (sweet)." },
+      "Kotlety s pure": { price: "$16", desc: "Juicy chicken/beef patties with creamy mashed potatoes." },
+      "Golubtsy": { price: "$15", desc: "Cabbage rolls filled with rice and meat, baked in tomato sauce." },
+      "Vinegret": { price: "$7", desc: "Beetroot salad with potatoes, carrots, pickles, and peas." },
+      "Seledka pod shuboy": { price: "$9", desc: "Layered herring salad with beets, carrots, potatoes, and mayo." },
+      "Syrniki": { price: "$8", desc: "Cottage cheese pancakes, served with sour cream and berry jam." },
+      "Blini": { price: "$10", desc: "Thin Russian crepes with choice of red caviar, salmon, or jam." },
+      "Kvass": { price: "$5", desc: "Traditional fermented rye bread drink, slightly sweet and refreshing." },
+      "Kisel": { price: "$4", desc: "Thick berry drink (cranberry or cherry), served warm or cold." },
+      "Mors": { price: "$5", desc: "Northern berry fruit drink made from lingonberries or cranberries." },
+      "Kompot": { price: "$4", desc: "Homemade dried fruit compote, served chilled." },
+      "Vodka": { price: "$7", desc: "Russian wheat vodka shot (1.5 oz) — served ice cold." }
+    }
+  },
+  ru: {
+    home: "Главная", about: "О нас", menu: "Меню", reservations: "Бронирование",
+    page_title: "Наше полное меню", page_sub: "Аутентичные домашние русские блюда, приготовленные с любовью.",
+    cat_soups: "🥣 Супы", cat_hot: "🔥 Горячие блюда", cat_salads: "🥗 Салаты и закуски", cat_desserts: "🥞 Блины и десерты", cat_drinks: "🧃 Напитки безалкогольные", cat_alcohol: "🍸 Алкоголь",
+    items: {
+      "Borscht": { price: "$9", desc: "Традиционный борщ со свеклой, капустой, мясом и сметаной." },
+      "Shchi": { price: "$8", desc: "Наваристые щи из квашеной капусты с говядиной." },
+      "Solyanka": { price: "$10", desc: "Солянка мясная: острый суп с оливками, лимоном и разным мясом." },
+      "Ukha": { price: "$11", desc: "Уха из сёмги и трески с картофелем и укропом." },
+      "Okroshka": { price: "$8", desc: "Окрошка на квасе с яйцом, огурцом, редисом и ветчиной." },
+      "Rassolnik": { price: "$9", desc: "Рассольник с перловкой и солёными огурцами." },
+      "Pelmeni": { price: "$14", desc: "Сибирские пельмени из свинины и говядины, со сметаной." },
+      "Vareniki": { price: "$13", desc: "Вареники с картофелем и луком / с вишней." },
+      "Kotlety s pure": { price: "$16", desc: "Котлеты куриные/говяжьи с нежным картофельным пюре." },
+      "Golubtsy": { price: "$15", desc: "Голубцы с рисом и мясом, запечённые в томатном соусе." },
+      "Vinegret": { price: "$7", desc: "Винегрет со свёклой, картофелем, солёными огурцами и горошком." },
+      "Seledka pod shuboy": { price: "$9", desc: "Сельдь под шубой — слоёный салат с майонезом." },
+      "Syrniki": { price: "$8", desc: "Сырники со сметаной и ягодным вареньем." },
+      "Blini": { price: "$10", desc: "Тонкие блины с красной икрой, лососем или вареньем." },
+      "Kvass": { price: "$5", desc: "Квас домашний, освежающий." },
+      "Kisel": { price: "$4", desc: "Кисель клюквенный / вишнёвый." },
+      "Mors": { price: "$5", desc: "Морс брусничный / клюквенный." },
+      "Kompot": { price: "$4", desc: "Компот из сухофруктов." },
+      "Vodka": { price: "$7", desc: "Русская пшеничная водка (стопка 50 мл), подаётся ледяной." }
+    }
+  },
+  // Для других языков потребуются аналогичные переводы. В целях экономии места оставлены en/ru.
+  // При желании вы можете добавить остальные языки по шаблону.
+};
+
+// Глобальная переменная текущего языка
+let currentLang = 'en';
+
+// Функция рендеринга меню
+function renderMenu(lang) {
+  const data = menuData[lang] || menuData.en;
+  const items = data.items;
+  // Категории (ключи блюд привязаны к массивам)
+  const soups = ["Borscht", "Shchi", "Solyanka", "Ukha", "Okroshka", "Rassolnik"];
+  const hot = ["Pelmeni", "Vareniki", "Kotlety s pure", "Golubtsy"];
+  const salads = ["Vinegret", "Seledka pod shuboy"];
+  const desserts = ["Syrniki", "Blini"];
+  const drinks = ["Kvass", "Kisel", "Mors", "Kompot"];
+  const alcohol = ["Vodka"];
+
+  function renderGrid(containerId, itemKeys) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    for (let key of itemKeys) {
+      const item = items[key];
+      if (!item) continue;
+      const div = document.createElement('div');
+      div.className = 'menu-item';
+      div.innerHTML = `<h3><span>${key}</span><span class="price">${item.price}</span></h3><p>${item.desc}</p>`;
+      container.appendChild(div);
+    }
+  }
+  renderGrid('soups-grid', soups);
+  renderGrid('hot-grid', hot);
+  renderGrid('salads-grid', salads);
+  renderGrid('desserts-grid', desserts);
+  renderGrid('drinks-grid', drinks);
+  renderGrid('alcohol-grid', alcohol);
+
+  // Обновление текстов на странице
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (data[key]) el.textContent = data[key];
+  });
+  document.getElementById('currentLangLabel').innerText = (lang === 'ru' ? 'Русский' : 'English');
+}
+
+// Переключение языка
+function setLanguage(lang) {
+  if (menuData[lang]) {
+    currentLang = lang;
+    renderMenu(lang);
+    localStorage.setItem('ruscos_menu_lang', lang);
+  }
+}
+
+// Инициализация языкового переключателя
+const langBtn = document.getElementById('langSwitcherBtn');
+const langDropdown = document.getElementById('langDropdown');
+langBtn.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('active'); });
+document.querySelectorAll('.lang-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const langCode = opt.getAttribute('data-lang');
+    setLanguage(langCode);
+    langDropdown.classList.remove('active');
+    document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active-lang'));
+    opt.classList.add('active-lang');
+  });
+});
+document.addEventListener('click', (e) => { if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) langDropdown.classList.remove('active'); });
+
+// Загрузка сохранённого языка
+const savedLang = localStorage.getItem('ruscos_menu_lang') || 'en';
+setLanguage(savedLang);
+document.querySelectorAll('.lang-option').forEach(opt => { if (opt.getAttribute('data-lang') === savedLang) opt.classList.add('active-lang'); });
+</script>
+</body>
+</html>
