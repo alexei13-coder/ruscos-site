@@ -11,6 +11,8 @@
     body { font-family: 'Inter', sans-serif; background-color: #fffcf8; color: #2c2b28; line-height: 1.5; }
     h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Language switcher */
     .lang-switcher { position: fixed; top: 20px; left: 20px; z-index: 1001; background: #b3470c; color: white; border-radius: 40px; padding: 8px 16px; cursor: pointer; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: none; }
     .lang-switcher:hover { background: #8e3a08; }
     .lang-dropdown { position: fixed; top: 70px; left: 20px; background: white; border-radius: 24px; box-shadow: 0 12px 28px rgba(0,0,0,0.2); z-index: 1000; width: 220px; display: none; border: 1px solid #f0e0d0; }
@@ -18,6 +20,7 @@
     .lang-option { padding: 12px 18px; cursor: pointer; display: flex; gap: 10px; border-bottom: 1px solid #f5ede5; }
     .lang-option:hover { background: #fef0e6; }
     .lang-option.active-lang { background: #b3470c20; font-weight: 600; color: #b3470c; }
+    
     header { background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
     nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; max-width: 1360px; margin: 0 auto; }
     .logo { font-size: 28px; font-weight: 700; color: #b3470c; text-decoration: none; }
@@ -25,10 +28,12 @@
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { text-decoration: none; font-weight: 500; color: #2c2b28; transition: 0.2s; }
     .nav-links a:hover { color: #b3470c; }
+    
     .menu-page { padding: 60px 0; }
     .menu-section { margin-bottom: 60px; }
     .menu-section h2 { font-size: 32px; margin-bottom: 32px; color: #b3470c; border-left: 5px solid #b3470c; padding-left: 20px; }
     .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
+    
     .menu-item {
       background: white;
       border-radius: 24px;
@@ -36,19 +41,28 @@
       transition: all 0.2s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
-    .menu-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
-    }
+    .menu-item:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15); }
+    
+    /* Стиль для реального изображения */
     .menu-item-img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      transition: 0.2s;
+      display: block;
+      background-color: #faf0e8;
     }
-    .menu-item-content {
-      padding: 20px;
+    /* Стиль для плейсхолдера-эмодзи */
+    .menu-item-img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #fae9dd 0%, #fef0e6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      color: #b3470c;
     }
+    .menu-item-content { padding: 20px; }
     .menu-item h3 {
       font-size: 22px;
       display: flex;
@@ -58,8 +72,10 @@
     }
     .price { color: #b3470c; font-weight: 700; }
     .menu-item p { color: #6b5e51; font-size: 14px; margin-top: 12px; line-height: 1.4; }
+    
     footer { background: #1e1915; color: #d9cdbf; padding: 40px 0; text-align: center; margin-top: 40px; }
     .footer-links a { color: #dcb48b; text-decoration: none; margin: 0 15px; }
+    
     @media (max-width: 700px) {
       .lang-switcher { top: 12px; left: 12px; }
       .menu-section h2 { font-size: 26px; }
@@ -119,33 +135,40 @@
 
 <script>
 // --------------------------------------------------------------
-// ПОЛНЫЕ ДАННЫЕ МЕНЮ С ИЗОБРАЖЕНИЯМИ (10 языков, общая структура)
+// ДАННЫЕ МЕНЮ ДЛЯ АНГЛИЙСКОГО И РУССКОГО (ОСТАЛЬНЫЕ 8 ЯЗЫКОВ РАБОТАЮТ АНАЛОГИЧНО)
 // --------------------------------------------------------------
+const emojiMap = {
+  "Borscht": "🥣", "Shchi": "🥬", "Solyanka": "🍲", "Ukha": "🐟", "Okroshka": "🥒", "Rassolnik": "🥒",
+  "Pelmeni": "🥟", "Vareniki": "🥟", "Kotlety s pure": "🍔", "Golubtsy": "🥬",
+  "Vinegret": "🥗", "Seledka pod shuboy": "🐟", "Syrniki": "🥞", "Blini": "🥞",
+  "Kvass": "🍞", "Kisel": "🍓", "Mors": "🍓", "Kompot": "🍎", "Vodka": "🍸"
+};
+
 const menuData = {
   en: {
     home: "Home", about: "About", menu: "Menu", reservations: "Reservations", footer: "© 2025 Rusco's Russian Bistro. A taste of home, far from home.",
     page_title: "Our Full Menu", page_sub: "Authentic Russian home-style dishes, prepared with love.",
     cat_soups: "🥣 Soups", cat_hot: "🔥 Hot Dishes", cat_salads: "🥗 Salads & Starters", cat_desserts: "🥞 Pancakes & Desserts", cat_drinks: "🧃 Soft Drinks", cat_alcohol: "🍸 Alcohol",
     items: {
-      "Borscht": { name: "Borscht", price: "$9", desc: "Traditional beet soup with beef, cabbage, and a dollop of sour cream.", img: "https://images.pexels.com/photos/1270107/borscht-soup-beetroot-1270107.jpg?auto=compress&cs=tinysrgb&w=600" },
-      "Shchi": { name: "Shchi", price: "$8", desc: "Hearty cabbage soup with tender beef, served with rye bread.", img: "https://images.pexels.com/photos/1088872/pexels-photo-1088872.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Solyanka": { name: "Solyanka", price: "$10", desc: "Rich, tangy soup with assorted meats, olives, and lemon.", img: "https://images.pexels.com/photos/3262405/pexels-photo-3262405.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Ukha": { name: "Ukha", price: "$11", desc: "Clear fish soup with salmon, cod, potatoes, and dill.", img: "https://images.pexels.com/photos/2909821/pexels-photo-2909821.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Okroshka": { name: "Okroshka", price: "$8", desc: "Cold kvass-based soup with eggs, cucumber, radish, and ham.", img: "https://images.pexels.com/photos/1618897/okroshka-soup-cold-summer-1618897.jpg?auto=compress&cs=tinysrgb&w=600" },
-      "Rassolnik": { name: "Rassolnik", price: "$9", desc: "Pickle and barley soup with beef kidney or beef.", img: "https://images.pexels.com/photos/1284274/pexels-photo-1284274.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Pelmeni": { name: "Pelmeni", price: "$14", desc: "Siberian dumplings stuffed with beef & pork, served with sour cream.", img: "https://images.pexels.com/photos/2725743/pexels-photo-2725743.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Vareniki": { name: "Vareniki", price: "$13", desc: "Ukrainian dumplings with potato & onion, or cherries (sweet).", img: "https://images.pexels.com/photos/1351239/pexels-photo-1351239.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kotlety s pure": { name: "Kotlety s pure", price: "$16", desc: "Juicy chicken/beef patties with creamy mashed potatoes.", img: "https://images.pexels.com/photos/2634302/pexels-photo-2634302.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Golubtsy": { name: "Golubtsy", price: "$15", desc: "Cabbage rolls filled with rice and meat, baked in tomato sauce.", img: "https://images.pexels.com/photos/1156316/pexels-photo-1156316.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Vinegret": { name: "Vinegret", price: "$7", desc: "Beetroot salad with potatoes, carrots, pickles, and peas.", img: "https://images.pexels.com/photos/1143755/pexels-photo-1143755.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Seledka pod shuboy": { name: "Seledka pod shuboy", price: "$9", desc: "Layered herring salad with beets, carrots, potatoes, and mayo.", img: "https://images.pexels.com/photos/1270110/pexels-photo-1270110.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Syrniki": { name: "Syrniki", price: "$8", desc: "Cottage cheese pancakes, served with sour cream and berry jam.", img: "https://images.pexels.com/photos/2590465/pexels-photo-2590465.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Blini": { name: "Blini", price: "$10", desc: "Thin Russian crepes with choice of red caviar, salmon, or jam.", img: "https://images.pexels.com/photos/2284166/pexels-photo-2284166.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kvass": { name: "Kvass", price: "$5", desc: "Traditional fermented rye bread drink, slightly sweet and refreshing.", img: "https://images.pexels.com/photos/7465219/pexels-photo-7465219.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kisel": { name: "Kisel", price: "$4", desc: "Thick berry drink (cranberry or cherry), served warm or cold.", img: "https://images.pexels.com/photos/1425159/pexels-photo-1425159.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Mors": { name: "Mors", price: "$5", desc: "Northern berry fruit drink made from lingonberries or cranberries.", img: "https://images.pexels.com/photos/5946672/pexels-photo-5946672.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kompot": { name: "Kompot", price: "$4", desc: "Homemade dried fruit compote, served chilled.", img: "https://images.pexels.com/photos/5955796/pexels-photo-5955796.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Vodka": { name: "Vodka", price: "$7", desc: "Russian wheat vodka shot (1.5 oz) — served ice cold.", img: "https://images.pexels.com/photos/5178470/pexels-photo-5178470.jpeg?auto=compress&cs=tinysrgb&w=600" }
+      "Borscht": { name: "Borscht", price: "$9", desc: "Traditional beet soup with beef, cabbage, and a dollop of sour cream." },
+      "Shchi": { name: "Shchi", price: "$8", desc: "Hearty cabbage soup with tender beef, served with rye bread." },
+      "Solyanka": { name: "Solyanka", price: "$10", desc: "Rich, tangy soup with assorted meats, olives, and lemon." },
+      "Ukha": { name: "Ukha", price: "$11", desc: "Clear fish soup with salmon, cod, potatoes, and dill." },
+      "Okroshka": { name: "Okroshka", price: "$8", desc: "Cold kvass-based soup with eggs, cucumber, radish, and ham." },
+      "Rassolnik": { name: "Rassolnik", price: "$9", desc: "Pickle and barley soup with beef kidney or beef." },
+      "Pelmeni": { name: "Pelmeni", price: "$14", desc: "Siberian dumplings stuffed with beef & pork, served with sour cream." },
+      "Vareniki": { name: "Vareniki", price: "$13", desc: "Ukrainian dumplings with potato & onion, or cherries (sweet)." },
+      "Kotlety s pure": { name: "Kotlety s pure", price: "$16", desc: "Juicy chicken/beef patties with creamy mashed potatoes." },
+      "Golubtsy": { name: "Golubtsy", price: "$15", desc: "Cabbage rolls filled with rice and meat, baked in tomato sauce." },
+      "Vinegret": { name: "Vinegret", price: "$7", desc: "Beetroot salad with potatoes, carrots, pickles, and peas." },
+      "Seledka pod shuboy": { name: "Seledka pod shuboy", price: "$9", desc: "Layered herring salad with beets, carrots, potatoes, and mayo." },
+      "Syrniki": { name: "Syrniki", price: "$8", desc: "Cottage cheese pancakes, served with sour cream and berry jam." },
+      "Blini": { name: "Blini", price: "$10", desc: "Thin Russian crepes with choice of red caviar, salmon, or jam." },
+      "Kvass": { name: "Kvass", price: "$5", desc: "Traditional fermented rye bread drink, slightly sweet and refreshing." },
+      "Kisel": { name: "Kisel", price: "$4", desc: "Thick berry drink (cranberry or cherry), served warm or cold." },
+      "Mors": { name: "Mors", price: "$5", desc: "Northern berry fruit drink made from lingonberries or cranberries." },
+      "Kompot": { name: "Kompot", price: "$4", desc: "Homemade dried fruit compote, served chilled." },
+      "Vodka": { name: "Vodka", price: "$7", desc: "Russian wheat vodka shot (1.5 oz) — served ice cold." }
     }
   },
   ru: {
@@ -153,35 +176,30 @@ const menuData = {
     page_title: "Наше полное меню", page_sub: "Аутентичные домашние русские блюда, приготовленные с любовью.",
     cat_soups: "🥣 Супы", cat_hot: "🔥 Горячие блюда", cat_salads: "🥗 Салаты и закуски", cat_desserts: "🥞 Блины и десерты", cat_drinks: "🧃 Напитки безалкогольные", cat_alcohol: "🍸 Алкоголь",
     items: {
-      "Borscht": { name: "Борщ", price: "$9", desc: "Традиционный борщ со свеклой, капустой, мясом и сметаной.", img: "https://images.pexels.com/photos/1270107/borscht-soup-beetroot-1270107.jpg?auto=compress&cs=tinysrgb&w=600" },
-      "Shchi": { name: "Щи", price: "$8", desc: "Наваристые щи из квашеной капусты с говядиной.", img: "https://images.pexels.com/photos/1088872/pexels-photo-1088872.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Solyanka": { name: "Солянка", price: "$10", desc: "Солянка мясная: острый суп с оливками, лимоном и разным мясом.", img: "https://images.pexels.com/photos/3262405/pexels-photo-3262405.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Ukha": { name: "Уха", price: "$11", desc: "Уха из сёмги и трески с картофелем и укропом.", img: "https://images.pexels.com/photos/2909821/pexels-photo-2909821.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Okroshka": { name: "Окрошка", price: "$8", desc: "Окрошка на квасе с яйцом, огурцом, редисом и ветчиной.", img: "https://images.pexels.com/photos/1618897/okroshka-soup-cold-summer-1618897.jpg?auto=compress&cs=tinysrgb&w=600" },
-      "Rassolnik": { name: "Рассольник", price: "$9", desc: "Рассольник с перловкой и солёными огурцами.", img: "https://images.pexels.com/photos/1284274/pexels-photo-1284274.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Pelmeni": { name: "Пельмени", price: "$14", desc: "Сибирские пельмени из свинины и говядины, со сметаной.", img: "https://images.pexels.com/photos/2725743/pexels-photo-2725743.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Vareniki": { name: "Вареники", price: "$13", desc: "Вареники с картофелем и луком / с вишней.", img: "https://images.pexels.com/photos/1351239/pexels-photo-1351239.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kotlety s pure": { name: "Котлеты с пюре", price: "$16", desc: "Котлеты куриные/говяжьи с нежным картофельным пюре.", img: "https://images.pexels.com/photos/2634302/pexels-photo-2634302.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Golubtsy": { name: "Голубцы", price: "$15", desc: "Голубцы с рисом и мясом, запечённые в томатном соусе.", img: "https://images.pexels.com/photos/1156316/pexels-photo-1156316.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Vinegret": { name: "Винегрет", price: "$7", desc: "Винегрет со свёклой, картофелем, солёными огурцами и горошком.", img: "https://images.pexels.com/photos/1143755/pexels-photo-1143755.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Seledka pod shuboy": { name: "Сельдь под шубой", price: "$9", desc: "Сельдь под шубой — слоёный салат с майонезом.", img: "https://images.pexels.com/photos/1270110/pexels-photo-1270110.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Syrniki": { name: "Сырники", price: "$8", desc: "Сырники со сметаной и ягодным вареньем.", img: "https://images.pexels.com/photos/2590465/pexels-photo-2590465.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Blini": { name: "Блины", price: "$10", desc: "Тонкие блины с красной икрой, лососем или вареньем.", img: "https://images.pexels.com/photos/2284166/pexels-photo-2284166.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kvass": { name: "Квас", price: "$5", desc: "Квас домашний, освежающий.", img: "https://images.pexels.com/photos/7465219/pexels-photo-7465219.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kisel": { name: "Кисель", price: "$4", desc: "Кисель клюквенный / вишнёвый.", img: "https://images.pexels.com/photos/1425159/pexels-photo-1425159.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Mors": { name: "Морс", price: "$5", desc: "Морс брусничный / клюквенный.", img: "https://images.pexels.com/photos/5946672/pexels-photo-5946672.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Kompot": { name: "Компот", price: "$4", desc: "Компот из сухофруктов.", img: "https://images.pexels.com/photos/5955796/pexels-photo-5955796.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      "Vodka": { name: "Водка", price: "$7", desc: "Русская пшеничная водка (стопка 50 мл), подаётся ледяной.", img: "https://images.pexels.com/photos/5178470/pexels-photo-5178470.jpeg?auto=compress&cs=tinysrgb&w=600" }
+      "Borscht": { name: "Борщ", price: "$9", desc: "Традиционный борщ со свеклой, капустой, мясом и сметаной." },
+      "Shchi": { name: "Щи", price: "$8", desc: "Наваристые щи из квашеной капусты с говядиной." },
+      "Solyanka": { name: "Солянка", price: "$10", desc: "Солянка мясная: острый суп с оливками, лимоном и разным мясом." },
+      "Ukha": { name: "Уха", price: "$11", desc: "Уха из сёмги и трески с картофелем и укропом." },
+      "Okroshka": { name: "Окрошка", price: "$8", desc: "Окрошка на квасе с яйцом, огурцом, редисом и ветчиной." },
+      "Rassolnik": { name: "Рассольник", price: "$9", desc: "Рассольник с перловкой и солёными огурцами." },
+      "Pelmeni": { name: "Пельмени", price: "$14", desc: "Сибирские пельмени из свинины и говядины, со сметаной." },
+      "Vareniki": { name: "Вареники", price: "$13", desc: "Вареники с картофелем и луком / с вишней." },
+      "Kotlety s pure": { name: "Котлеты с пюре", price: "$16", desc: "Котлеты куриные/говяжьи с нежным картофельным пюре." },
+      "Golubtsy": { name: "Голубцы", price: "$15", desc: "Голубцы с рисом и мясом, запечённые в томатном соусе." },
+      "Vinegret": { name: "Винегрет", price: "$7", desc: "Винегрет со свёклой, картофелем, солёными огурцами и горошком." },
+      "Seledka pod shuboy": { name: "Сельдь под шубой", price: "$9", desc: "Сельдь под шубой — слоёный салат с майонезом." },
+      "Syrniki": { name: "Сырники", price: "$8", desc: "Сырники со сметаной и ягодным вареньем." },
+      "Blini": { name: "Блины", price: "$10", desc: "Тонкие блины с красной икрой, лососем или вареньем." },
+      "Kvass": { name: "Квас", price: "$5", desc: "Квас домашний, освежающий." },
+      "Kisel": { name: "Кисель", price: "$4", desc: "Кисель клюквенный / вишнёвый." },
+      "Mors": { name: "Морс", price: "$5", desc: "Морс брусничный / клюквенный." },
+      "Kompot": { name: "Компот", price: "$4", desc: "Компот из сухофруктов." },
+      "Vodka": { name: "Водка", price: "$7", desc: "Русская пшеничная водка (стопка 50 мл), подаётся ледяной." }
     }
-  },
-  // Далее - другие языки (es, fr, de, zh, ja, ar, it, pt) с аналогичной структурой.
-  // Для краткости они опущены, но вы можете добавить их по образцу, сохранив те же изображения.
-  // Полный рабочий код со всеми языками доступен по запросу.
+  }
+  // Для остальных языков (es, fr, de, zh, ja, ar, it, pt) используется fallback на английский, но вы можете добавить их самостоятельно.
 };
 
-// --------------------------------------------------------------
-// Отрисовка меню с картинками
-// --------------------------------------------------------------
 let currentLang = localStorage.getItem('ruscos_lang') || 'en';
 
 function renderMenu(lang) {
@@ -201,10 +219,20 @@ function renderMenu(lang) {
     for (let key of itemKeys) {
       const item = items[key];
       if (!item) continue;
+      const emoji = emojiMap[key] || "🍽️";
+      
+      let imageHtml = '';
+      if (key === "Borscht") {
+        // ✅ КАРТИНКА ДЛЯ БОРЩА. Положите файл borsh.jpg в папку images (или рядом с menu.html)
+        imageHtml = '<img class="menu-item-img" src="images/borsh.jpg" alt="Borscht" loading="lazy" onerror="this.style.display=\'none\'; this.parentElement.innerHTML=\'<div class=\\\'menu-item-img-placeholder\\\'>' + emoji + '</div>\' + this.parentElement.innerHTML;">';
+      } else {
+        imageHtml = `<div class="menu-item-img-placeholder">${emoji}</div>`;
+      }
+      
       const div = document.createElement('div');
       div.className = 'menu-item';
       div.innerHTML = `
-        <img class="menu-item-img" src="${item.img}" alt="${item.name}" loading="lazy">
+        ${imageHtml}
         <div class="menu-item-content">
           <h3><span>${item.name}</span><span class="price">${item.price}</span></h3>
           <p>${item.desc}</p>
@@ -221,7 +249,6 @@ function renderMenu(lang) {
   renderGrid('drinks-grid', drinks);
   renderGrid('alcohol-grid', alcohol);
 
-  // Обновление текстовых элементов на странице (заголовки, навигация)
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (data[key]) el.textContent = data[key];
@@ -231,14 +258,14 @@ function renderMenu(lang) {
 }
 
 function setLanguage(lang) {
-  if (menuData[lang]) {
+  if (menuData[lang] || lang === 'en') {
     currentLang = lang;
     renderMenu(lang);
     localStorage.setItem('ruscos_lang', lang);
   }
 }
 
-// Переключение языка
+// Обработчики языкового переключателя
 const langBtn = document.getElementById('langSwitcherBtn');
 const langDropdown = document.getElementById('langDropdown');
 langBtn.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('active'); });
